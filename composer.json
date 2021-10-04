@@ -1,0 +1,26 @@
+{
+    "name": "usdi/mcakubemqphp",
+    "description": "paket pengiriman pesan telegram menggunakan kubemq",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "balinux",
+            "email": "ryojuniyantara@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Usdidev\\McaKubemqPhp\\McaKubemqPhpServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Usdidev\\McaKubemqPhp\\": "src/"
+        }
+    },
+    "require": {}
+}
