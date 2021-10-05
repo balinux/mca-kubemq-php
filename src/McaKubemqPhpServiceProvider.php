@@ -14,7 +14,11 @@ class McaKubemqPhpServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('mcakubemqphp', function () {
+        // $this->app->bind('mcakubemqphp', function () {
+        //     return new McaKubemqPhp();
+        // });
+
+        $this->app->singleton('mcakubemqphp', function($app){
             return new McaKubemqPhp();
         });
     }
