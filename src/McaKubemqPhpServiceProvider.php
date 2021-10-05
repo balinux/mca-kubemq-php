@@ -14,7 +14,7 @@ class McaKubemqPhpServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('mcakubemqphp', function(){
+        $this->app->bind('mcakubemqphp', function () {
             return new McaKubemqPhp();
         });
     }
@@ -26,6 +26,8 @@ class McaKubemqPhpServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/config/mcakubemqphp.php' => config_path('mcakubemqphp.php'),], 'config');
+
     }
 }
