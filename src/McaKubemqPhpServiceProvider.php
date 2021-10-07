@@ -3,7 +3,7 @@
 namespace Usdidev\McaKubemqPhp;
 
 use Illuminate\Support\ServiceProvider;
-use Usdidev\McaKubemqPhp\Messagekube;
+use Usdidev\McaKubemqPhp\Services\Messagekube;
 
 class McaKubemqPhpServiceProvider extends ServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Usdidev\McaKubemqPhp;
+namespace Usdidev\McaKubemqPhp\Services;
 
 class Messagekube
 {
