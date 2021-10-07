@@ -10,16 +10,16 @@
         }
     ],
     "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Usdidev\\McaKubemqPhp\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "Usdidev\\McaKubemqPhp\\McaKubemqPhpServiceProvider"
             ]
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Usdidev\\McaKubemqPhp\\": "src/"
         }
     },
     "require": {}
