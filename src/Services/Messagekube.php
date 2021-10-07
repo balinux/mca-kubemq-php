@@ -86,9 +86,10 @@ class Messagekube
         curl_close($curl);
         if ($debug == true) {
             if ($err ) {
-                echo "cURL Error #:" . $err;
+                // echo "cURL Error #:" . $err;
+                return $err;
             } else {
-                echo $response;
+                return $response;
             }
         } else {
             # code...
