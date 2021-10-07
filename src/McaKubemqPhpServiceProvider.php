@@ -14,10 +14,6 @@ class McaKubemqPhpServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->app->bind('mcakubemqphp', function () {
-        //     return new McaKubemqPhp();
-        // });
-
         $this->app->bind('kubemq-message', function () {
             return new Messagekube();
         });

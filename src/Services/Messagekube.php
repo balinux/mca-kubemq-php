@@ -41,18 +41,13 @@ class Messagekube
         $this->channel = config('mcakubemqphp.channel', '');
     }
 
-    public function dump()
-    {
-        dd('dumping kube mq package');
-    }
-
     /**
      * Sending Message.
      *
      * @param idsso $idsso
      * @param message $message
      */
-    public function sendMessage($id_sso, $message_text)
+    public function sendMessage($id_sso, $message_text, $debug = false)
     {
         $curl = curl_init();
 
@@ -89,10 +84,14 @@ class Messagekube
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
-        if ($err) {
-            echo "cURL Error #:" . $err;
+        if ($debug == true) {
+            if ($err ) {
+                echo "cURL Error #:" . $err;
+            } else {
+                echo $response;
+            }
         } else {
-            echo $response;
+            # code...
         }
     }
 
