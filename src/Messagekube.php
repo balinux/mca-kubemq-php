@@ -5,23 +5,43 @@ namespace Usdidev\McaKubemqPhp;
 class Messagekube
 {
 
-    // /**
-    //  * @var Address
-    //  */
-    // protected $address;
+    /**
+     * @var Address
+     * alamat ip kubemq
+     */
+    protected $address;
+    /**
+     * @var port
+     * alamat ip kubemq
+     */
+    protected $port;
+    /**
+     * @var clientid
+     * alamat ip kubemq
+     */
+    protected $clientid;
+    /**
+     * @var channel
+     * alamat ip kubemq
+     */
+    protected $channel;
 
 
-    // /**
-    //  * Session constructor.
-    //  *
-    //  * @param Address $address
-    //  */
-    // public function __construct($address)
-    // {
-    //     $this->address = $address;
-    // }
+    /**
+     * Session constructor.
+     * $address, $port, $channel, $clientid
+     *
+     * @param Address $address
+     */
+    public function __construct()
+    {
+        $this->address = config('mcakubemqphp.address', '');
+        $this->port = config('mcakubemqphp.port', '');
+        $this->clientid = config('mcakubemqphp.clientid', '');
+        $this->channel = config('mcakubemqphp.channel', '');
+    }
 
-    public static function dump()
+    public function dump()
     {
         dd('dumping kube mq package');
     }
@@ -29,37 +49,28 @@ class Messagekube
     /**
      * Sending Message.
      *
-     * @param Address $address
+     * @param idsso $idsso
+     * @param message $message
      */
-    public static function sendMessage($address, $port, $channel, $clientid)
+    public function sendMessage($id_sso, $message_text)
     {
         $curl = curl_init();
 
         $post_fields = json_encode(array(
             "EventID" => "1234-5678-90",
-            "ClientID" => $clientid,
-            "Channel" => $channel,
+            "ClientID" => $this->clientid,
+            "Channel" => $this->channel,
             "Metadata" => "some-metadata",
             "Body" => base64_encode(json_encode(array(
-                "id_sso" => "32018000182",
-                "message_text" => '[SIRAISA]
-                Ada surat masuk dari Rektor
-                DETAIL SURAT 
-                <strong>Perihal:</strong> 
-                        BERITA ACARA SERAH TERIMA BARANG MILIK NEGARA KONOHA
-                <strong>Sifat surat:</strong> Biasa
-                        
-                <strong>Tgl. Surat:</strong> 09-11-2020
-                <strong>LAMPIRAN FILE</strong> 
-                <a href="https://siraisa.unud.ac.id/uploads/surat-keluar/BAST_FEB.pdf">B_UN14_PL_2020_1607569648</a>
-                <a href="https://siraisa.unud.ac.id/mca/read_letter?code=IKQE5t2t4vW52F7ecGxQLbqAnJBYNwHFlFOh2ING&jabatan_penerima=59&detail_surat_id=317314" target="_blank">TANDAI SURAT INI SUDAH DIBACA!</a>'
+                "id_sso" => $id_sso,
+                "message_text" => $message_text
             ))),
             "Store" => false
         ));
         // echo $post_fields;
         // exit;
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$address}:{$port}/send/event",
+            CURLOPT_URL => "{$this->address}:{$this->port}/send/event",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -88,6 +99,7 @@ class Messagekube
     public function display()
     {
         // return 'tampilan menggunakan facades';
-        dd('tes message');
+        dd('display message');
+        // dd(config('mcakubemqphp.address', 'test'));
     }
 }
