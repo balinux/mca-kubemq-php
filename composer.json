@@ -9,6 +9,11 @@
             "email": "ryojuniyantara@gmail.com"
         }
     ],
+    "keywords": [
+        "mca",
+        "kubemq",
+        "laravel"
+    ],
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
@@ -19,7 +24,11 @@
         "laravel": {
             "providers": [
                 "Usdidev\\McaKubemqPhp\\McaKubemqPhpServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "SSOWeb": "RistekUSDI\\SSO\\Facades\\SSOWeb",
+                "Messagekube": "\\Usdidev\\McaKubemqPhp\\Facades\\Messagekube"
+            }
         }
     },
     "require": {}
