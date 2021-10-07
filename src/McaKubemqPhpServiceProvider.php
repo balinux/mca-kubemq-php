@@ -3,7 +3,7 @@
 namespace Usdidev\McaKubemqPhp;
 
 use Illuminate\Support\ServiceProvider;
-use Usdidev\McaKubemqPhp\Services\McaKubemqPhp;
+use Usdidev\McaKubemqPhp\Messagekube;
 
 class McaKubemqPhpServiceProvider extends ServiceProvider
 {
@@ -18,9 +18,13 @@ class McaKubemqPhpServiceProvider extends ServiceProvider
         //     return new McaKubemqPhp();
         // });
 
-        $this->app->singleton('mcakubemqphp', function($app){
-            return new McaKubemqPhp();
+        $this->app->bind('kubemq-message', function () {
+            return new Messagekube();
         });
+
+        // $this->app->singleton('mcakubemqphp', function($app){
+        //     return new McaKubemqPhp();
+        // });
     }
 
     /**
